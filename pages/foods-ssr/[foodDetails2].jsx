@@ -35,7 +35,7 @@ const foodDetails2 = ({ food }) => {
 
   return (
     <div>
-      <h1>coba halaman foood details 2: {food.name}</h1>
+      <h1>Halaman foood details 2: {food.name}</h1>
 
       <h1>{food.name}</h1>
       <img
@@ -46,7 +46,7 @@ const foodDetails2 = ({ food }) => {
       <br />
       <p>{food.description}</p>
       <br />
-      <Link href="/coba-foods-ssr">kembali</Link>
+      <Link href="/foods-ssr">kembali</Link>
     </div>
   );
 };

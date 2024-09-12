@@ -65,7 +65,7 @@ const CobaFoodSsr2 = ({ foods, isError, errorMessage = '' }) => {
           <br />
           <p>{food.description}</p>
           <br />
-          <Link href={`/coba-foods-ssr/${food.id}`}>See Details</Link>
+          <Link href={`/foods-ssr/${food.id}`}>See Details</Link>
         </div>
       ))}
     </div>
