@@ -2,6 +2,8 @@ import axios from 'axios';
 import { getCookie } from 'cookies-next';
 import useSWR from 'swr';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const fetcher = async () => {
   const res = await axios
@@ -15,12 +17,20 @@ const fetcher = async () => {
     .catch((error) => {
       console.log(error);
     });
-  console.log(res.data.data);
 
-  return res.data.data;
+  return res?.data?.data;
 };
 
 const Halaman1 = () => {
+  const router = useRouter();
+  const token = getCookie('token');
+
+  useEffect(() => {
+    if (token === undefined || token === '') {
+      router.push('/login');
+    }
+  }, [token]);
+
   const { data, error } = useSWR('users', fetcher);
 
   if (error) return <div>Failed to load</div>;
@@ -30,7 +40,8 @@ const Halaman1 = () => {
     <div className="text-2xl">
       <h1>Halaman 1</h1>
       <br />
-
+      <Link href="/">halaman awal</Link>
+      <br />
       {data.map((user, index) => (
         <div key={user.id}>
           <h1>
