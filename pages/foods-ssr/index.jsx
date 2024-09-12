@@ -9,7 +9,7 @@ export async function getServerSideProps(context) {
 
   try {
     if (!token) {
-      throw new Error('Token not found'); // ga ada token langsung ke catch (kareba pakau throw new Error)
+      throw new Error('Token not found'); // ga ada token langsung ke catch (karena pakai throw new Error)
     }
 
     const response = await axios.get('https://api-bootcamp.do.dibimbing.id/api/v1/foods', {
@@ -43,31 +43,37 @@ const CobaFoodSsr2 = ({ foods, isError, errorMessage = '' }) => {
   // const token = getCookie('token');
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center gap-4 text-2xl">
       <h1>Halaman 2</h1>
-      <br />
 
       <Link href="/">halaman awal</Link>
-      <br />
 
       {isError && <p>Error fetching foods : {errorMessage}</p>}
 
-      {foods.map((food, index) => (
-        <div key={food.id}>
-          <h1>
-            {index + 1}. {food.name}
-          </h1>
-          <img
-            src={food.imageUrl}
-            alt={food.name}
-            className="w-96 h-96"
-          />
-          <br />
-          <p>{food.description}</p>
-          <br />
-          <Link href={`/foods-ssr/${food.id}`}>See Details</Link>
-        </div>
-      ))}
+      <div className="grid w-full grid-cols-4 gap-4 px-5 ">
+        {foods.map((food, index) => (
+          <div
+            key={food.id}
+            className="border-4 border-white rounded-2xl w-[15rem] h-[24rem] flex flex-col items-center text-center justify-center gap-4"
+          >
+            <h1 className="text-2xl">
+              {index + 1}. {food.name}
+            </h1>
+            <img
+              src={food.imageUrl}
+              alt={food.name}
+              className="w-[60%] h-[50%]"
+            />
+            <p className="text-xl">{food.description}</p>
+            <Link
+              href={`/foods-ssr/${food.id}`}
+              className="hover:text-blue-500"
+            >
+              See Details
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
