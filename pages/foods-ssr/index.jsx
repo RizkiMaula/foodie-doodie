@@ -2,7 +2,6 @@ import axios from 'axios';
 import { getCookie } from 'cookies-next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 
 export async function getServerSideProps(context) {
   const token = getCookie('token', context);
@@ -44,7 +43,7 @@ const CobaFoodSsr2 = ({ foods, isError, errorMessage = '' }) => {
 
   return (
     <div className="flex flex-col items-center justify-center gap-4 text-2xl">
-      <h1>Halaman 2</h1>
+      <h1>Halaman SSR</h1>
 
       <Link href="/">halaman awal</Link>
 
@@ -67,7 +66,7 @@ const CobaFoodSsr2 = ({ foods, isError, errorMessage = '' }) => {
             <p className="text-xl">{food.description}</p>
             <Link
               href={`/foods-ssr/${food.id}`}
-              className="hover:text-blue-500"
+              className="text-xl hover:text-blue-500"
             >
               See Details
             </Link>

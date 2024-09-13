@@ -29,17 +29,36 @@ const FoodDetailsPage = () => {
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>loading...</div>;
 
+  const date = new Date(data.createdAt);
+  const formattedDateDitambah = date.toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+  const formattedDateDiubah = date.toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+
   return (
-    <div>
-      <h1>Halaman food details: {router.query.foodDetails}</h1>
-      <br />
-      <h1>{data.name}</h1>
-      <img
-        src={data.imageUrl}
-        alt={data.name}
-        className="w-96 h-96"
-      />
-      <Link href="/foods">Back</Link>
+    <div className="flex flex-col items-center justify-center gap-4 text-2xl">
+      <h1>Halaman food details: {data.name}</h1>
+      <div className="flex flex-col items-center justify-center gap-4 p-8 border-4 border-white rounded-xl">
+        <h1>{data.name}</h1>
+        <img
+          src={data.imageUrl}
+          alt={data.name}
+          className="w-96 h-96"
+        />
+        <p>{data.description}</p>
+
+        <div>
+          <p>Tanggal Ditambah: {formattedDateDitambah}</p>
+          <p>Tanggal Diubah: {formattedDateDiubah}</p>
+        </div>
+        <Link href="/foods">Back</Link>
+      </div>
     </div>
   );
 };

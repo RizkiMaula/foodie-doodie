@@ -22,42 +22,44 @@ const fetcher = async () => {
 };
 
 const Halaman1 = () => {
-  const router = useRouter();
-  const token = getCookie('token');
-
-  useEffect(() => {
-    if (token === undefined || token === '') {
-      router.push('/login');
-    }
-  }, [token]);
-
   const { data, error } = useSWR('users', fetcher);
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>loading...</div>;
 
   return (
-    <div className="text-2xl">
-      <h1>Halaman 1</h1>
-      <br />
+    <div className="flex flex-col items-center justify-center gap-4 text-2xl">
+      {alert(
+        'pada halaman jika ditekan tombol see details akan pergi ke halaman food details dan saat kembali ke halaman food list malah error dan jika di refresh malah berjalan seperti biasa. saya binggung disitu. tapi yang pake ssr tuh lancar.'
+      )}
+
+      <h1>Halaman CSR</h1>
+
       <Link href="/">halaman awal</Link>
-      <br />
-      {data.map((user, index) => (
-        <div key={user.id}>
-          <h1>
-            {index + 1}. {user.name}
-          </h1>
-          <img
-            src={user.imageUrl}
-            alt={user.name}
-            className="w-96 h-96"
-          />
-          <br />
-          <p>{user.description}</p>
-          <br />
-          <Link href={`/foods/${user.id}`}>See Details</Link>
-        </div>
-      ))}
+      <div className="grid w-full grid-cols-4 gap-4 px-5">
+        {data.map((user, index) => (
+          <div
+            key={user.id}
+            className="border-4 border-white rounded-2xl w-[15rem] h-[24rem] flex flex-col items-center text-center justify-center gap-4"
+          >
+            <h1 className="text-2xl">
+              {index + 1}. {user.name}
+            </h1>
+            <img
+              src={user.imageUrl}
+              alt={user.name}
+              className="w-[60%] h-[50%]"
+            />
+            <p className="text-xl">{user.description}</p>
+            <Link
+              href={`/foods/${user.id}`}
+              className="text-xl hover:text-blue-500"
+            >
+              See Details
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
