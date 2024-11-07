@@ -48,7 +48,7 @@ const CobaFoodSsr2 = ({ foods, isError, errorMessage = '' }) => {
 
       {isError && <p>Error fetching foods : {errorMessage}</p>}
 
-      <div className="grid w-full grid-cols-4 gap-4 px-5 ">
+      <div className="grid w-full grid-cols-2 gap-4 px-5 md:grid-cols-4">
         {foods.map((food, index) => (
           <div
             key={food.id}

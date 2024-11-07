@@ -33,7 +33,7 @@ const Halaman1 = () => {
       <h1>Halaman CSR</h1>
 
       <Link href="/">halaman awal</Link>
-      <div className="grid w-full grid-cols-4 gap-4 px-5">
+      <div className="grid w-full grid-cols-2 gap-4 px-5 md:grid-cols-4">
         {data.map((user, index) => (
           <div
             key={user.id}
