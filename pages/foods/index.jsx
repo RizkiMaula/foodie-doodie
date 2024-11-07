@@ -2,9 +2,6 @@ import axios from 'axios';
 import { getCookie } from 'cookies-next';
 import useSWR from 'swr';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-
 const fetcher = async () => {
   const res = await axios
     .get('https://api-bootcamp.do.dibimbing.id/api/v1/foods', {
@@ -30,7 +27,7 @@ const Halaman1 = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-4 text-2xl">
       {alert(
-        'pada halaman jika ditekan tombol see details akan pergi ke halaman food details dan saat kembali ke halaman food list malah error dan jika di refresh malah berjalan seperti biasa. saya binggung disitu. tapi yang pake ssr tuh lancar.'
+        'pada halaman jika ditekan tombol see details akan pergi ke halaman food details dan saat kembali ke halaman food list malah error dan jika di refresh malah berjalan seperti biasa. saya binggung disitu. tapi yang pake ssr tuh lancar. karena itu saya lebih prefer pakai SSR'
       )}
 
       <h1>Halaman CSR</h1>

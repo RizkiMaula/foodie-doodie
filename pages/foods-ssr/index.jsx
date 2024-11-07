@@ -18,7 +18,6 @@ export async function getServerSideProps(context) {
         apiKey: 'w05KkI9AWhKxzvPFtXotUva-',
       },
     });
-
     return {
       props: {
         foods: response.data.data,

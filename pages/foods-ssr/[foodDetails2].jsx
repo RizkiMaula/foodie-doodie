@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import axios from 'axios';
 import { getCookie } from 'cookies-next';
-import { useRouter } from 'next/router';
 
 export async function getServerSideProps(context) {
   const token = getCookie('token', context);
