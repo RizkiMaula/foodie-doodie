@@ -34,10 +34,13 @@ const LoginPage = () => {
         router.push('/');
       })
       .catch((error) => {
-        // console.log(error.message);
-        alert(`Login Failed : ${error.message}`);
+        console.log(error.message);
       });
   };
+
+  useEffect(() => {
+    alert('Username: miftahfarhan@gmail.com Password: qwerty123');
+  }, []);
 
   useEffect(() => {
     if (getCookie('token')) {
@@ -47,7 +50,6 @@ const LoginPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center gap-4 p-10 border-2 border-white m-9">
-      {alert('Username: miftahfarhan@gmail.com Password: qwerty123')}
       <h1 className="text-2xl">Login Page</h1>
       <input
         className="px-1 text-black "
@@ -62,6 +64,7 @@ const LoginPage = () => {
         onChange={handlePasswordChange}
       />
       <button onClick={handleSubmit}>Login</button>
+      {/* <button onClick={() => alert('halo')}>test</button> */}
     </div>
   );
 };
