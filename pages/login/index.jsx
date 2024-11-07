@@ -48,6 +48,7 @@ const LoginPage = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-4 p-10 border-2 border-white m-9">
       <h1 className="text-2xl">Login Page</h1>
+      {alert('Username: miftahfarhan@gmail.com Password: qwerty123')}
       <input
         className="px-1 text-black "
         type="email"
