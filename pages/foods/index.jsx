@@ -37,7 +37,7 @@ const Halaman1 = () => {
         {data.map((user, index) => (
           <div
             key={user.id}
-            className="border-4 border-white rounded-2xl w-[15rem] h-[24rem] flex flex-col items-center text-center justify-center gap-4"
+            className="flex flex-col items-center justify-center gap-4 p-4 text-center border-4 border-white rounded-2xl"
           >
             <h1 className="text-2xl">
               {index + 1}. {user.name}
