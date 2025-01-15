@@ -42,10 +42,10 @@ const foodDetails2 = ({ food }) => {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4 text-2xl">
+    <div className="flex flex-col items-center justify-center gap-4 m-4 text-2xl">
       <h1>Halaman foood details 2: {food.name}</h1>
 
-      <div className="flex flex-col items-center justify-center gap-4 p-8 border-4 border-white rounded-xl">
+      <div className="flex flex-col items-center justify-center gap-4 border-4 border-white rounded-xl">
         <h1>{food.name}</h1>
         <img
           src={food.imageUrl}
